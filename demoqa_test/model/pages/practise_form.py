@@ -1,6 +1,7 @@
 from selene.support.conditions import have
 from selene.support.shared import browser
 from demoqa_test.model.control import checkboxs, datapiecker, dropdown, radio_button
+from demoqa_test.utils import upload
 
 
 def open_registration_form():
@@ -20,7 +21,7 @@ def type_email(email):
 
 
 def select_gender(value):
-    radio_button.gender('[name="gender"]', value)
+    radio_button.gender(browser.all('[for="gender-radio-1"'), value)
 
 
 def type_phone_number(number):
@@ -46,11 +47,15 @@ def select_day(value):
 
 
 def type_subject(text):
-    browser.element('#subjectsInput').type(text)
+    browser.element('#subjectsInput').type(text).press_enter()
 
 
 def select_hobby(value):
     checkboxs.hobby('[for^="hobbies-checkbox"]', value)
+
+
+def upload_picture(path):
+    upload.path_picture('#uploadPicture', path)
 
 
 def select_state(text):
@@ -66,7 +71,7 @@ def type_address(text):
 
 
 def submit():
-    browser.element('#submit')
+    browser.element('#submit').click()
 
 
 def check_results(texts):
