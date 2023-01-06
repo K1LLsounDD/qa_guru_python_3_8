@@ -74,5 +74,5 @@ def submit():
     browser.element('#submit').click()
 
 
-def check_results(texts):
-    browser.all('.table-responsive td:nth-child(2)').should(have.texts(texts))
+def check_results(*args):
+    browser.all('.table-responsive td:nth-child(2)').should(have.texts(*args))
